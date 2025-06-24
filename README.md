@@ -28,20 +28,19 @@ pipenv install
 pipenv shell
 ```
 
-### 3. Create the database
+### 3. View the database
 open psql and run;
 
 ```console
-CREATE DATABASE show_db;
+psql -U postgres -d show_db -h localhost
 ```
-
-### 4. Configure the DB in server/config.py
 
 ```console
-SQLALCHEMY_DATABASE_URI = "postgresql://postgres:<your_password>@localhost:5432/show_db"
+pharaoh as the db pass
 ```
 
-### 5. Run migrations and seed
+
+### 4. Run migrations and seed
 
 ```console
 export FLASK_APP=server/app.py
@@ -98,3 +97,5 @@ Select LateShowEnv in the top-right dropdown
 
 Click Send on protected routes → they’ll work with the token!
 ```
+
+Thank you and enjoy the experience!
