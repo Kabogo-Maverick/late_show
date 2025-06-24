@@ -47,7 +47,17 @@ export FLASK_APP=server/app.py
 flask db init
 flask db migrate -m "Initial migration"
 flask db upgrade
+```
+
+### 5. Seed the data
+```console
 python -m server.seed
+```
+
+### 6. Run the app
+```console
+export FLASK_APP=server/app.py
+flask run
 ```
 
 ### BELOW IS THE AUTHENTICATION FLOW
