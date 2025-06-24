@@ -34,9 +34,9 @@ open psql and run;
 ```console
 psql -U postgres -d show_db -h localhost
 ```
-
+pass:
 ```console
-pharaoh as the db pass
+pharaoh
 ```
 
 
