@@ -7,5 +7,11 @@ class Guest(db.Model):
     name = db.Column(db.String, nullable=False)
     occupation = db.Column(db.String, nullable=False)
 
-    # A guest can appear in many episodes
-    appearances = db.relationship("Appearance", backref="guest", cascade="all, delete")
+    appearances = db.relationship("Appearance", back_populates="guest", cascade="all, delete")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "occupation": self.occupation,
+        }

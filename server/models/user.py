@@ -8,7 +8,7 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
-    password_hash = db.Column(db.Text, nullable=False)  # Allow longer hash strings
+    password_hash = db.Column(db.Text, nullable=False)  # Allows longer hash strings
 
     def set_password(self, password):
         """Hashes and stores the user's password."""
@@ -25,6 +25,13 @@ class User(db.Model):
     @password.setter
     def password(self, plain_text_password):
         self.set_password(plain_text_password)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "username": self.username
+            # Excludes password_hash for security
+        }
 
     def __repr__(self):
         return f"<User {self.username}>"

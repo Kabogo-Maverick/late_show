@@ -7,5 +7,16 @@ class Episode(db.Model):
     date = db.Column(db.String, nullable=False)
     number = db.Column(db.Integer, nullable=False)
 
-    # An episode can have many appearances
-    appearances = db.relationship("Appearance", backref="episode", cascade="all, delete")
+    appearances = db.relationship("Appearance", back_populates="episode", cascade="all, delete")
+
+    def to_dict(self, include_relationships=False):
+        data = {
+            "id": self.id,
+            "date": self.date,
+            "number": self.number,
+        }
+
+        if include_relationships:
+            data["appearances"] = [a.to_dict() for a in self.appearances]
+
+        return data
